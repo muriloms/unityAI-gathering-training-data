@@ -867,7 +867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &912675694
 Transform:
   m_ObjectHideFlags: 0
@@ -991,13 +991,33 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1121218721}
+  - component: {fileID: 1121218718}
   m_Layer: 0
   m_Name: ANNKart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &1121218718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121218717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ebc67249f069fa4d99f995a6a031edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visibleDistance: 200
+  epochs: 1000
+  speed: 50
+  rotationSpeed: 100
+  translation: 0
+  rotation: 0
+  loadFromFile: 0
 --- !u!4 &1121218721
 Transform:
   m_ObjectHideFlags: 0

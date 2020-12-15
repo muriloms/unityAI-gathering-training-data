@@ -48,45 +48,56 @@ public class Drive : MonoBehaviour
         
         // Raucasts
         RaycastHit hit;
-        float fDist = visibleDistance;
-        float rDist = visibleDistance;
-        float lDist = visibleDistance;
-        float r45Dist = visibleDistance;
-        float l45Dist = visibleDistance;
+        float fDist = 0;
+        float rDist = 0;
+        float lDist = 0;
+        float r45Dist = 0;
+        float l45Dist = 0;
         
         // Forward
         if (Physics.Raycast(transform.position, transform.forward, out hit, visibleDistance))
         {
-            fDist = hit.distance;
+            fDist = 1 - Round(hit.distance/visibleDistance);
         }
         
         // Right
         if (Physics.Raycast(transform.position, transform.right, out hit, visibleDistance))
         {
-            rDist = hit.distance;
+            rDist = 1 - Round(hit.distance/visibleDistance);
         }
         
         // Left
         if (Physics.Raycast(transform.position, -transform.right, out hit, visibleDistance))
         {
-            lDist = hit.distance;
+            lDist = 1 - Round(hit.distance / visibleDistance);
         }
         
         // Right 45
-        if (Physics.Raycast(transform.position, Quaternion.AngleAxis(45,Vector3.up) * transform.right, out hit, visibleDistance))
+        if (Physics.Raycast(transform.position, Quaternion.AngleAxis(45,Vector3.up) * -transform.right, out hit, visibleDistance))
         {
-            r45Dist = hit.distance;
+            r45Dist = 1 - Round(hit.distance/visibleDistance);
         }
         
         // Left 45
-        if (Physics.Raycast(transform.position, Quaternion.AngleAxis(45,Vector3.up) * -transform.right, out hit, visibleDistance))
+        if (Physics.Raycast(transform.position, Quaternion.AngleAxis(-45,Vector3.up) * transform.right, out hit, visibleDistance))
         {
-            l45Dist = hit.distance;
+            l45Dist = 1 - Round(hit.distance/visibleDistance);
         }
 
-        string td = fDist + "," + rDist + "," + lDist + "," + r45Dist + "," + l45Dist + "," + translationInput +
-                    "," + rotationInput;
+        string td = fDist + "," + rDist + "," + lDist + "," + r45Dist + "," + l45Dist + "," + Round(translationInput) +
+                    "," + Round(rotationInput);
+
+        if (!collectedTrainingData.Contains(td))
+        {
+            collectedTrainingData.Add(td);
+        }
         
-        collectedTrainingData.Add(td);
     }
+
+    private float Round(float x)
+    {
+        return (float) System.Math.Round(x, System.MidpointRounding.AwayFromZero) / 2.0f;
+    }
+    
+    
 }

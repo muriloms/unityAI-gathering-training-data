@@ -12,8 +12,10 @@
             <e p="Layer.cs" t="Include" />
             <e p="Neuron.cs" t="Include" />
           </e>
+          <e p="ANNDrive.cs" t="Include" />
           <e p="Drive.cs" t="Include" />
         </e>
+        <e p="trainingData.txt" t="Include" />
       </e>
       <e p="GatheringTrainingDataFromThePlayer.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />
